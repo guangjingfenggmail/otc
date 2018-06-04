@@ -11,6 +11,8 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import otc.open.com.otc.R;
 import otc.open.com.otc.service.bean.Bean;
 
@@ -24,7 +26,7 @@ import otc.open.com.otc.service.bean.Bean;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VHolder>{
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VHolder> {
 
     List<Bean> list;
     Context context;
@@ -37,8 +39,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VHolder>{
     @Override
     public VHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LinearLayout.inflate(context, R.layout.layout_item, null);
-        VHolder holder=new VHolder(view);
-
+        VHolder holder = new VHolder(view);
         return holder;
     }
 
@@ -54,15 +55,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VHolder>{
         return list.size();
     }
 
-    class VHolder extends RecyclerView.ViewHolder{
+    static class VHolder extends RecyclerView.ViewHolder{
+        @BindView(R.id.t)
+        TextView t;
+        @BindView(R.id.dra)
+        SimpleDraweeView dra;
 
-        private final TextView t;
-        private final SimpleDraweeView dra;
-
-        public VHolder(View itemView) {
-            super(itemView);
-            dra = itemView.findViewById(R.id.dra);
-            t = itemView.findViewById(R.id.t);
+        public VHolder(View view) {
+            super(view);
+            ButterKnife.bind(this, view);
         }
     }
 }

@@ -9,6 +9,9 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import otc.open.com.otc.R;
 import otc.open.com.otc.adapter.MyAdapter;
 import otc.open.com.otc.presenter.impl.PresenterImpl;
@@ -27,16 +30,18 @@ import rx.subscriptions.CompositeSubscription;
  * @description: *****************************************************************************************************************************************************************************
  **/
 public class XMainActivity extends AppCompatActivity implements ViewInter {
-    private XRecyclerView xre;
+    @BindView(R.id.xre)
+    XRecyclerView xre;
+
     private List<Bean> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xmain);
+        ButterKnife.bind(this);
 
-        xre = findViewById(R.id.xre);
-        PresenterImpl presenter=new PresenterImpl(this,this);
+        PresenterImpl presenter = new PresenterImpl(this, this);
         presenter.info();
 
 
@@ -47,8 +52,8 @@ public class XMainActivity extends AppCompatActivity implements ViewInter {
         list.add(new Bean());
         list.add(new Bean());
         list.add(new Bean());
-        MyAdapter adapter=new MyAdapter(list,XMainActivity.this);
-        GridLayoutManager gridLayoutManager=new GridLayoutManager(XMainActivity.this,2,GridLayoutManager.VERTICAL,false);
+        MyAdapter adapter = new MyAdapter(list, XMainActivity.this);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(XMainActivity.this, 2, GridLayoutManager.VERTICAL, false);
         xre.setLayoutManager(gridLayoutManager);
         xre.setAdapter(adapter);
 
@@ -65,4 +70,5 @@ public class XMainActivity extends AppCompatActivity implements ViewInter {
     protected void onDestroy() {
         super.onDestroy();
     }
+
 }
