@@ -3,7 +3,7 @@ package otc.open.com.otc.helper;
 import android.content.Context;
 
 import otc.open.com.otc.service.ServiceApi;
-import otc.open.com.otc.service.bean.Bean;
+import otc.open.com.otc.service.bean.TickerJson;
 import rx.Observable;
 
 /**
@@ -23,7 +23,7 @@ public class DataManager {
         this.mRetrofitService = RetrofitHelper.getInstance(context).getServer();
     }
     //网络请求方法getSearchBooks
-    public Observable<Bean> getcall(){
+    public Observable<TickerJson> getcall(){
         return mRetrofitService.call();
     }
 }

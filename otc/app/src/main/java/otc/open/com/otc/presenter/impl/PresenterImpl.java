@@ -4,7 +4,7 @@ import android.content.Context;
 
 import otc.open.com.otc.model.Model;
 import otc.open.com.otc.presenter.PresenterInter;
-import otc.open.com.otc.service.bean.Bean;
+import otc.open.com.otc.service.bean.TickerJson;
 import otc.open.com.otc.viewInter.ViewInter;
 
 /**
@@ -35,7 +35,7 @@ public class PresenterImpl implements PresenterInter {
     }
 
     @Override
-    public void onSuccessP(Bean bean) {
+    public void onSuccessP(TickerJson bean) {
         vi.onSuccessV(bean);
     }
 }

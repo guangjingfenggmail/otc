@@ -15,7 +15,7 @@ import butterknife.OnClick;
 import otc.open.com.otc.R;
 import otc.open.com.otc.adapter.MyAdapter;
 import otc.open.com.otc.presenter.impl.PresenterImpl;
-import otc.open.com.otc.service.bean.Bean;
+import otc.open.com.otc.service.bean.TickerJson;
 import otc.open.com.otc.viewInter.ViewInter;
 import rx.subscriptions.CompositeSubscription;
 
@@ -33,7 +33,7 @@ public class XMainActivity extends AppCompatActivity implements ViewInter {
     @BindView(R.id.xre)
     XRecyclerView xre;
 
-    private List<Bean> list = new ArrayList<>();
+    private List<TickerJson> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +48,8 @@ public class XMainActivity extends AppCompatActivity implements ViewInter {
     }
 
     @Override
-    public void onSuccessV(Bean bean) {
-        list.add(new Bean());
-        list.add(new Bean());
-        list.add(new Bean());
+    public void onSuccessV(TickerJson bean) {
+        list.add(bean);
         MyAdapter adapter = new MyAdapter(list, XMainActivity.this);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(XMainActivity.this, 2, GridLayoutManager.VERTICAL, false);
         xre.setLayoutManager(gridLayoutManager);

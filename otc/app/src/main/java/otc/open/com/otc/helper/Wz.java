@@ -11,5 +11,5 @@ package otc.open.com.otc.helper;
  * @description: *****************************************************************************************************************************************************************************
  **/
 public class Wz {
-    public static String wz="https://staging-service.cashalo.com/trade/";
+    public static String wz="http://api.bitkk.com/";
 }

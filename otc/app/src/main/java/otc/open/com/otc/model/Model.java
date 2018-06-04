@@ -7,7 +7,7 @@ import com.google.gson.Gson;
 
 import otc.open.com.otc.helper.DataManager;
 import otc.open.com.otc.presenter.PresenterInter;
-import otc.open.com.otc.service.bean.Bean;
+import otc.open.com.otc.service.bean.TickerJson;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -41,7 +41,7 @@ public class Model {
                         //订阅
                         .subscribe(
                                 //观察者
-                                new Observer<Bean>() {
+                                new Observer<TickerJson>() {
                                     @Override
                                     public void onCompleted() {
                                         Log.d("xxx", "onCompleted: "+"onCompleted");
@@ -53,7 +53,7 @@ public class Model {
                                     }
 
                                     @Override
-                                    public void onNext(Bean bean) {
+                                    public void onNext(TickerJson bean) {
                                         Gson gson = new Gson();
                                         Log.d("jiba", "onNext: "+gson.toJson(bean));
                                         pre.onSuccessP(bean);

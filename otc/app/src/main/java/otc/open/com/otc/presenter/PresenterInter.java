@@ -1,6 +1,6 @@
 package otc.open.com.otc.presenter;
 
-import otc.open.com.otc.service.bean.Bean;
+import otc.open.com.otc.service.bean.TickerJson;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -13,5 +13,5 @@ import otc.open.com.otc.service.bean.Bean;
  * @description: *****************************************************************************************************************************************************************************
  **/
 public interface PresenterInter {
-    void onSuccessP(Bean bean);
+    void onSuccessP(TickerJson bean);
 }

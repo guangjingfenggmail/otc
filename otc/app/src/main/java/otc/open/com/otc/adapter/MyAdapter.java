@@ -14,7 +14,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import otc.open.com.otc.R;
-import otc.open.com.otc.service.bean.Bean;
+import otc.open.com.otc.service.bean.TickerJson;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -28,10 +28,10 @@ import otc.open.com.otc.service.bean.Bean;
  **/
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VHolder> {
 
-    List<Bean> list;
+    List<TickerJson> list;
     Context context;
 
-    public MyAdapter(List<Bean> list, Context context) {
+    public MyAdapter(List<TickerJson> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -45,9 +45,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VHolder> {
 
     @Override
     public void onBindViewHolder(VHolder holder, int position) {
-        holder.t.setText(list.get(position).getTitle());
-        String split = list.get(position).getImage();
-        holder.dra.setImageURI(split);
+        holder.t.setText(list.get(position).ticker.buy);
+//        String split = list.get(position).getImage();
+//        holder.dra.setImageURI(split);
     }
 
     @Override

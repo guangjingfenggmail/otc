@@ -1,6 +1,7 @@
 package otc.open.com.otc.viewInter;
 
-import otc.open.com.otc.service.bean.Bean;
+
+import otc.open.com.otc.service.bean.TickerJson;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -13,6 +14,6 @@ import otc.open.com.otc.service.bean.Bean;
  * @description: *****************************************************************************************************************************************************************************
  **/
 public interface ViewInter {
-    void  onSuccessV(Bean bean);
+    void  onSuccessV(TickerJson bean);
 
 }
