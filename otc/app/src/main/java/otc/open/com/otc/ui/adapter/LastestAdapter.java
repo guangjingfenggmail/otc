@@ -5,9 +5,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.interfaces.DraweeController;
-import com.facebook.drawee.view.SimpleDraweeView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class LastestAdapter extends CommonRecyclerViewAdapter<LatestBean.StorieB
     @Override
     public View convertView() {
         mView = View.inflate(mContext, R.layout.adapter_lastest_item, null);
-        ButterKnife.bind(this, mView);
+
         return mView;
     }
 
@@ -49,23 +48,20 @@ public class LastestAdapter extends CommonRecyclerViewAdapter<LatestBean.StorieB
     @Override
     public void setData(LastestViewHolder holder,LatestBean.StorieBean item, int position) {
         holder.txtTitle.setText(item.title);
-        DraweeController failureImageDraweeController = Fresco.newDraweeControllerBuilder()
-                .setUri(item.images.get(0))
-                .setTapToRetryEnabled(false)  //同时设置不可重试.
-                .setOldController(holder.image.getController())
-                .build();
-        holder.image.setController(failureImageDraweeController);
+        Glide.with(mContext).load(item.images.get(0))
+                .crossFade(0)
+                .into(holder.image);  //crossFade是个淡入淡出效果
     }
 
     static class LastestViewHolder extends CommonRecyclerViewHolder{
         @BindView(R.id.image)
-        SimpleDraweeView image;
+        ImageView image;
         @BindView(R.id.txtTitle)
         TextView txtTitle;
 
         LastestViewHolder(View view) {
             super(view);
-
+            ButterKnife.bind(this, view);
         }
     }
 }
