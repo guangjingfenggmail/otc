@@ -1,10 +1,8 @@
 package otc.open.com.otc.service;
 
 import otc.open.com.otc.rx.BaseHttpResult;
-import otc.open.com.otc.service.bean.LoginBean;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.POST;
+import otc.open.com.otc.service.bean.LatestBean;
+import retrofit2.http.GET;
 import rx.Observable;
 
 /**
@@ -17,10 +15,12 @@ import rx.Observable;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
-public interface LoginService {
-    //登录接口
-    @FormUrlEncoded
-    @POST("demo/login")
-    Observable<BaseHttpResult<LoginBean>> login(@Field("userName") String username, @Field
-            ("passWord") String pwd);
+public interface NewsService {
+
+    /**
+     *
+     * @return
+     */
+    @GET("news/latest")
+    Observable<LatestBean> latest();
 }

@@ -1,5 +1,6 @@
-package otc.open.com.otc.rx.retrofit;
 
+
+package otc.open.com.otc.rx.retrofit;
 
 
 import otc.open.com.otc.rx.BaseHttpResult;

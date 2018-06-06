@@ -3,6 +3,9 @@ package otc.open.com.otc.base;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
+
 /**
  * ****************************************************************************************************************************************************************************
  *
@@ -20,6 +23,10 @@ public class OtcApplication extends Application {
     public void onCreate() {
         super.onCreate();
         application = this;
+        ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
+                .setDownsampleEnabled(true)
+                .build();
+        Fresco.initialize(this,config);
     }
 
     public static Context getContext(){

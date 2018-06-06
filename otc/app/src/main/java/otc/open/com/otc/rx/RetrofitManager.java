@@ -26,7 +26,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
  * @description: *****************************************************************************************************************************************************************************
  **/
 public class RetrofitManager {
-    public static String BASE_URL = "";
+    public static String BASE_URL = "http://news-at.zhihu.com/api/4/";
 
     private static OkHttpClient client;
     private  static volatile Retrofit retrofit;
@@ -124,15 +124,15 @@ public class RetrofitManager {
                     httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
                     //设置 请求的缓存的大小跟位置
-                    File cacheFile = new File(OtcApplication.getContext().getCacheDir(), "cache");
-                    Cache cache = new Cache(cacheFile, 1024 * 1024 * 50); //50Mb 缓存的大小
+//                    File cacheFile = new File(OtcApplication.getContext().getCacheDir(), "cache");
+//                    Cache cache = new Cache(cacheFile, 1024 * 1024 * 50); //50Mb 缓存的大小
 
                     client = new OkHttpClient
                             .Builder()
                             .addInterceptor(addQueryParameterInterceptor())  //参数添加
                             .addInterceptor(addHeaderInterceptor()) // token过滤
                             .addInterceptor(httpLoggingInterceptor) //日志,所有的请求响应度看到
-                            .cache(cache)  //添加缓存
+//                            .cache(cache)  //添加缓存
                             .connectTimeout(60l, TimeUnit.SECONDS)
                             .readTimeout(60l, TimeUnit.SECONDS)
                             .writeTimeout(60l, TimeUnit.SECONDS)
