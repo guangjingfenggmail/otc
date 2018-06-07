@@ -3,6 +3,8 @@ package otc.open.com.otc.base;
 import android.app.Application;
 import android.content.Context;
 
+import otc.open.com.otc.utils.ImageDisplay;
+
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -21,6 +23,7 @@ public class OtcApplication extends Application {
     public void onCreate() {
         super.onCreate();
         application = this;
+        ImageDisplay.initialize(this,null);
 
     }
 

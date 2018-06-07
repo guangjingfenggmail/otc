@@ -6,7 +6,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import com.bumptech.glide.Glide;
+import com.facebook.drawee.drawable.ScalingUtils;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import otc.open.com.otc.R;
 import otc.open.com.otc.base.adapter.CommonRecyclerViewAdapter;
 import otc.open.com.otc.base.adapter.CommonRecyclerViewHolder;
 import otc.open.com.otc.service.bean.LatestBean;
+import otc.open.com.otc.utils.ImageDisplay;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -48,14 +50,16 @@ public class LastestAdapter extends CommonRecyclerViewAdapter<LatestBean.StorieB
     @Override
     public void setData(LastestViewHolder holder,LatestBean.StorieBean item, int position) {
         holder.txtTitle.setText(item.title);
-        Glide.with(mContext).load(item.images.get(0))
-                .crossFade(0)
-                .into(holder.image);  //crossFade是个淡入淡出效果
+//        Glide.with(mContext).load(item.images.get(0))
+//                .crossFade(0)
+//                .into(holder.image);  //crossFade是个淡入淡出效果
+        ImageDisplay.with(holder.image).holderImage(R.mipmap.ic_launcher).failureImage(mContext.getResources().getDrawable(R.mipmap.ic_launcher),
+                ScalingUtils.ScaleType.FIT_XY).display(item.images.get(0));
     }
 
     static class LastestViewHolder extends CommonRecyclerViewHolder{
         @BindView(R.id.image)
-        ImageView image;
+        SimpleDraweeView image;
         @BindView(R.id.txtTitle)
         TextView txtTitle;
 
