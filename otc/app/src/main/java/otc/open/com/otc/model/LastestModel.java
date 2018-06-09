@@ -32,37 +32,9 @@ public class LastestModel extends BaseModel {
      */
     public void latest(@NonNull final LastestCallBack
                                callBack) {
-//        RetrofitManager.getService(NewsService.class).latest()
-//                .compose(new CommonTransformer<LatestBean>())
-//                .subscribe(new CommonSubscriber<LatestBean>(OtcApplication.getContext()) {
-//                    @Override
-//                    public void onNext(LatestBean callback) {
-//                        callBack.onSuccess(callback);
-//                    }
-//
-//                    @Override
-//                    protected void onError(ApiException e) {
-//                        super.onError(e);
-//                        callBack.onFailure(e.message);
-//                    }
-//                });
 
-        RetrofitManager.getService(NewsService.class).latest()
-                .compose(new ObectTransformer<LatestBean>())
-                .subscribe(new CommonSubscriber<LatestBean>(OtcApplication.getContext()) {
-                    @Override
-                    public void onNext(LatestBean callback) {
-//                        Gson gson = new Gson();
-//                        LatestBean bean = gson.fromJson(gson.toJson(callBack),LatestBean.class);
-                        callBack.onSuccess(callback);
-                    }
+        NewsService.latest(callBack);
 
-                    @Override
-                    protected void onError(ApiException e) {
-                        super.onError(e);
-                        callBack.onFailure(e.message);
-                    }
-                });
     }
 
 
