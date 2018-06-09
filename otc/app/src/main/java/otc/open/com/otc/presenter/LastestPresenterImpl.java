@@ -20,14 +20,15 @@ import otc.open.com.otc.ui.activity.LastestActivity;
 
 public class LastestPresenterImpl extends BasePresenter<LastestActivity> implements
         LastestContract.LastestPresenter {
-    public static final String MODEL_KEY = "model_key";
+//    public static final String MODEL_KEY = "getLastest";
 
     @Override
     public void getLastest() {
-        ((LastestModel) getiModelMap().get(MODEL_KEY)).latest(new LastestModel.LastestCallBack() {
+//        ((LastestModel) getiModelMap().get(MODEL_KEY)).latest(new LastestModel.LastestCallBack<LatestBean>() {
+        new LastestModel().latest(new LastestModel.LastestCallBack<LatestBean>() {
             @Override
-            public void onSuccess(LatestBean callback) {
-                getIView().onSuccess(callback);
+            public void onSuccess(LatestBean result) {
+                getIView().onSuccess(result);
             }
 
             @Override
@@ -38,16 +39,24 @@ public class LastestPresenterImpl extends BasePresenter<LastestActivity> impleme
 
     }
 
-
     @Override
     public HashMap<String, IModel> getiModelMap() {
-        return loadModelMap(new LastestModel());
+        return null;
     }
 
     @Override
     public HashMap<String, IModel> loadModelMap(IModel... models) {
-        HashMap<String, IModel> map = new HashMap<>();
-        map.put(MODEL_KEY, models[0]);
-        return map;
+        return null;
     }
+//    @Override
+//    public HashMap<String, IModel> getiModelMap() {
+//        return loadModelMap(new LastestModel());
+//    }
+//
+//    @Override
+//    public HashMap<String, IModel> loadModelMap(IModel... models) {
+//        HashMap<String, IModel> map = new HashMap<>();
+//        map.put(MODEL_KEY, models[0]);
+//        return map;
+//    }
 }

@@ -2,15 +2,8 @@ package otc.open.com.otc.model;
 
 import android.support.annotation.NonNull;
 
-import com.google.gson.Gson;
-
+import otc.open.com.otc.base.BaseCallBack;
 import otc.open.com.otc.base.BaseModel;
-import otc.open.com.otc.base.OtcApplication;
-import otc.open.com.otc.rx.RetrofitManager;
-import otc.open.com.otc.rx.exception.ApiException;
-import otc.open.com.otc.rx.retrofit.CommonSubscriber;
-import otc.open.com.otc.rx.retrofit.CommonTransformer;
-import otc.open.com.otc.rx.retrofit.ObectTransformer;
 import otc.open.com.otc.service.NewsService;
 import otc.open.com.otc.service.bean.LatestBean;
 
@@ -38,18 +31,7 @@ public class LastestModel extends BaseModel {
     }
 
 
-    public interface LastestCallBack {
-        /**
-         *
-         * @param callback
-         */
-        void onSuccess(LatestBean callback);
-
-        /**
-         *
-         * @param str
-         */
-        void onFailure(String str);
+    public interface LastestCallBack  extends BaseCallBack<LatestBean> {
 
     }
 

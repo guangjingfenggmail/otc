@@ -1,5 +1,6 @@
 package otc.open.com.otc.contract;
 
+import otc.open.com.otc.base.BaseContractView;
 import otc.open.com.otc.service.bean.LatestBean;
 
 /**
@@ -13,18 +14,8 @@ import otc.open.com.otc.service.bean.LatestBean;
 
 public class LastestContract {
 
-    public interface LastestView {
-        /**
-         *
-         * @param callback
-         */
-        void onSuccess(LatestBean callback);
-
-        /**
-         *
-         * @param str
-         */
-        void onFailure(String str);
+    public interface LastestView  extends BaseContractView<LatestBean> {
+       
     }
 
 
