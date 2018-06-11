@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import otc.open.com.otc.R;
@@ -22,6 +24,7 @@ import otc.open.com.otc.service.bean.NewsInfoBean;
  * @modifyAuthor:
  * @description: ****************************************************************************************************************************************************************************
  */
+@Route(path = "/path/newsinfo")
 public class NewsInfoActivity extends BaseActivity<NewsInfoPresenterImpl> implements NewsInfoContract.NewsInfoView {
     @BindView(R.id.webview)
     WebView webview;

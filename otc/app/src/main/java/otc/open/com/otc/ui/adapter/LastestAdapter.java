@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -60,11 +61,19 @@ public class LastestAdapter extends CommonRecyclerViewAdapter<LatestBean.StorieB
         holder.txtTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(mContext, NewsInfoActivity.class);
-                intent.putExtra("ID",item.id);
-                intent.putExtra("TITLE",item.title);
-                mContext.startActivity(intent);
+//                Intent intent = new Intent();
+//                intent.setClass(mContext, NewsInfoActivity.class);
+//                intent.putExtra("ID",item.id);
+//                intent.putExtra("TITLE",item.title);
+//                mContext.startActivity(intent);
+
+                ARouter.getInstance()
+                        .build("/path/newsinfo") //内容就是想跳转去那个module注解的path
+                        .withString("ID", item.id)
+                        .withString("TITLE",item.title)
+                        .navigation();
+
+
             }
         });
     }

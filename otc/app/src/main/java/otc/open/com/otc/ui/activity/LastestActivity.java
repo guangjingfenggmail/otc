@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +34,7 @@ import otc.open.com.otc.widget.GridItemDividerDecoration;
  * @modifyAuthor:
  * @description: *****************************************************************************************************************************************************************************
  **/
+@Route(path = "/path/lastest")
 public class LastestActivity extends BaseActivity<LastestPresenterImpl> implements LastestContract.LastestView,SwipeRefreshLayout.OnRefreshListener {
     @BindView(R.id.recycleview)
     RecyclerView recycleview;
