@@ -57,6 +57,7 @@ public class LastestActivity extends BaseActivity<LastestPresenterImpl> implemen
         recycleview.setLayoutManager(linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mLastestAdapter = new LastestAdapter(this,storiesList);
         recycleview.setAdapter(mLastestAdapter);
+
     }
 
     @Override

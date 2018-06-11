@@ -25,7 +25,7 @@ public class LastestPresenterImpl extends BasePresenter<LastestActivity> impleme
     @Override
     public void getLastest() {
 //        ((LastestModel) getiModelMap().get(MODEL_KEY)).latest(new LastestModel.LastestCallBack<LatestBean>() {
-        new LastestModel().latest(new LastestModel.LastestCallBack<LatestBean>() {
+        new LastestModel().latest(new LastestModel.LastestCallBack() {
             @Override
             public void onSuccess(LatestBean result) {
                 getIView().onSuccess(result);
