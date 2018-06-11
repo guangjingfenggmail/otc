@@ -1,5 +1,9 @@
 package otc.open.com.otc.base;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 /**
  * ****************************************************************************************************************************************************************************
  *
@@ -10,17 +14,11 @@ package otc.open.com.otc.base;
  * @modifyAuthor:
  * @description: ****************************************************************************************************************************************************************************
  */
-public interface BaseCallBack<T> {
+public interface BaseCallBack<T> extends Callback<T> {
 
-    /**
-     *
-     * @param result
-     */
-    void onSuccess(T result);
+    @Override
+    void onResponse(Call<T> call, Response<T> response);
 
-    /**
-     *
-     * @param msg
-     */
-    void onFailure(String msg);
+    @Override
+    void onFailure(Call<T> call, Throwable t);
 }

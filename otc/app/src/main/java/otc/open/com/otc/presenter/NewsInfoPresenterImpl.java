@@ -8,6 +8,8 @@ import otc.open.com.otc.contract.NewsInfoContract;
 import otc.open.com.otc.model.NewsInfoModel;
 import otc.open.com.otc.service.bean.NewsInfoBean;
 import otc.open.com.otc.ui.activity.NewsInfoActivity;
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -35,14 +37,16 @@ public class NewsInfoPresenterImpl extends BasePresenter<NewsInfoActivity> imple
     public void getNewsInfo(String id) {
         new NewsInfoModel().getNewsInfo(id, new NewsInfoModel.NewsInfoCallBack() {
             @Override
-            public void onSuccess(NewsInfoBean result) {
-                getIView().onSuccess(result);
+            public void onResponse(Call<NewsInfoBean> call, Response<NewsInfoBean> response) {
+                getIView().onSuccess(response.body());
             }
 
             @Override
-            public void onFailure(String msg) {
-                getIView().onFailure(msg);
+            public void onFailure(Call<NewsInfoBean> call, Throwable t) {
+                getIView().onFailure(t.getMessage());
             }
+
+
         });
     }
 }

@@ -8,7 +8,10 @@ import otc.open.com.otc.base.mvp.IModel;
 import otc.open.com.otc.contract.LastestContract;
 import otc.open.com.otc.model.LastestModel;
 import otc.open.com.otc.service.bean.LatestBean;
+import otc.open.com.otc.service.bean.NewsInfoBean;
 import otc.open.com.otc.ui.activity.LastestActivity;
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * Created by GaoSheng on 2016/11/26.
@@ -27,13 +30,13 @@ public class LastestPresenterImpl extends BasePresenter<LastestActivity> impleme
 //        ((LastestModel) getiModelMap().get(MODEL_KEY)).latest(new LastestModel.LastestCallBack<LatestBean>() {
         new LastestModel().latest(new LastestModel.LastestCallBack() {
             @Override
-            public void onSuccess(LatestBean result) {
-                getIView().onSuccess(result);
+            public void onResponse(Call<LatestBean> call, Response<LatestBean> response) {
+                getIView().onSuccess(response.body());
             }
 
             @Override
-            public void onFailure(String str) {
-                getIView().onFailure(str);
+            public void onFailure(Call<LatestBean> call, Throwable t) {
+                getIView().onFailure(t.getMessage());
             }
         });
 

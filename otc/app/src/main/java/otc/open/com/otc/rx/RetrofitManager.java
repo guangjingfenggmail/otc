@@ -10,7 +10,10 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import otc.open.com.otc.base.BaseCallBack;
 import otc.open.com.otc.base.OtcApplication;
+import otc.open.com.otc.service.bean.LatestBean;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -150,5 +153,12 @@ public class RetrofitManager {
             }
         }
         return retrofit;
+    }
+
+
+    public static  <T> Call<T> enqueueAdapter(Call<T> call,BaseCallBack<T> callBack){
+        //add interceptor
+        call.enqueue(callBack);
+        return call;
     }
 }
