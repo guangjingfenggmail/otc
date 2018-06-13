@@ -48,6 +48,12 @@ public class LastestFragment extends BaseFragment<LastestPresenterImpl> implemen
     }
 
     @Override
+    protected void attachView() {
+        if (mPresenter != null)
+            mPresenter.attachView(this);
+    }
+
+    @Override
     public void onRefresh() {
 
     }

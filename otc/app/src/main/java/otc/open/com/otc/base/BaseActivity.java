@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
-import otc.open.com.otc.base.mvp.IView;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -17,7 +16,7 @@ import otc.open.com.otc.base.mvp.IView;
  * @description: *****************************************************************************************************************************************************************************
  **/
 public abstract class BaseActivity<P extends BasePresenter> extends FragmentActivity implements
-        IView, View.OnClickListener {
+         View.OnClickListener {
     protected View view;
     protected P mPresenter;
 
@@ -33,10 +32,11 @@ public abstract class BaseActivity<P extends BasePresenter> extends FragmentActi
 
     protected abstract P initPresenter();
 
-    private void attachView() {
-        if (mPresenter != null)
-            mPresenter.attachView(this);
-    }
+    protected abstract void attachView();
+//    {
+//        if (mPresenter != null)
+//            mPresenter.attachView(this);
+//    }
 
     protected abstract void initVaules();
 

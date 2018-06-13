@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import otc.open.com.otc.base.mvp.IView;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -21,7 +20,7 @@ import otc.open.com.otc.base.mvp.IView;
  * @description: *****************************************************************************************************************************************************************************
  **/
 public abstract class BaseFragment<P extends BasePresenter> extends Fragment implements
-        IView, View.OnClickListener {
+         View.OnClickListener {
     protected P mPresenter;
     protected View view;
     @Nullable
@@ -49,10 +48,11 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
 
     protected abstract P initPresenter();
 
-    private void attachView() {
-        if (mPresenter != null)
-            mPresenter.attachView(this);
-    }
+    protected abstract void attachView();
+//    {
+//        if (mPresenter != null)
+//            mPresenter.attachView(this);
+//    }
 
     protected abstract void initVaules();
 

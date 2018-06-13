@@ -3,11 +3,8 @@ package otc.open.com.otc.base;
 
 
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
 
-import otc.open.com.otc.base.mvp.IModel;
 import otc.open.com.otc.base.mvp.IPresenter;
-import otc.open.com.otc.base.mvp.IView;
 
 /**
  * Created by GaoSheng on 2016/11/26.
@@ -17,14 +14,14 @@ import otc.open.com.otc.base.mvp.IView;
  * com.example.gs.mvpdemo.base
  */
 
-public abstract class BasePresenter<V extends IView> implements IPresenter {
+public abstract class BasePresenter<CV extends BaseContractView> implements IPresenter {
     private WeakReference actReference;
-    protected V iView;
+    protected CV iView;
 
-    public abstract HashMap<String, IModel> getiModelMap();
+//    public abstract HashMap<String, IModel> getiModelMap();
 
     @Override
-    public void attachView(IView iView) {
+    public void attachView(BaseContractView iView) {
         actReference = new WeakReference(iView);
     }
 
@@ -37,15 +34,15 @@ public abstract class BasePresenter<V extends IView> implements IPresenter {
     }
 
     @Override
-    public V getIView() {
-        return (V) actReference.get();
+    public CV getIView() {
+        return (CV) actReference.get();
     }
 
-    /**
-     * @param models
-     * @return
-     * 添加多个model,如有需要
-     */
-    public abstract HashMap<String, IModel> loadModelMap(IModel... models);
+//    /**
+//     * @param models
+//     * @return
+//     * 添加多个model,如有需要
+//     */
+//    public abstract HashMap<String, IModel> loadModelMap(IModel... models);
 
 }

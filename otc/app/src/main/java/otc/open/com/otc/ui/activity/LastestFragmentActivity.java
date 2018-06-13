@@ -44,6 +44,11 @@ public class LastestFragmentActivity extends BaseActivity  {
     }
 
     @Override
+    protected void attachView() {
+
+    }
+
+    @Override
     protected void initVaules() {
         Fragment fragment = LastestFragment.getInstance();
         getSupportFragmentManager().beginTransaction().replace(R.id.idfragment,fragment).commit();

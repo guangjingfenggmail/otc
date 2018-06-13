@@ -9,5 +9,5 @@ package otc.open.com.otc.base.mvp;
  * mvp之v
  */
 
-public interface IView {
-}
+//public interface IView {
+//}

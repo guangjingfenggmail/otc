@@ -1,5 +1,7 @@
 package otc.open.com.otc.base.mvp;
 
+import otc.open.com.otc.base.BaseContractView;
+
 /**
  * Created by GaoSheng on 2016/11/26.
  * 17:20
@@ -9,12 +11,12 @@ package otc.open.com.otc.base.mvp;
  * mvp之P
  */
 
-public interface IPresenter<V extends IView> {
+public interface IPresenter<CV extends BaseContractView> {
 
     /**
      * @param view 绑定
      */
-    void attachView(V view);
+    void attachView(CV view);
 
 
     /**
@@ -27,6 +29,6 @@ public interface IPresenter<V extends IView> {
      *
      * @return 获取View
      */
-    IView getIView();
+    CV getIView();
 
 }

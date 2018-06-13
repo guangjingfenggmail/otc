@@ -30,6 +30,12 @@ public class NewsInfoActivity extends BaseActivity<NewsInfoPresenterImpl> implem
     WebView webview;
 
     @Override
+    protected void attachView() {
+        if (mPresenter!=null)
+            mPresenter.attachView(this);
+    }
+
+    @Override
     protected NewsInfoPresenterImpl initPresenter() {
         return new NewsInfoPresenterImpl();
     }

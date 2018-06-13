@@ -23,7 +23,7 @@ import retrofit2.Response;
  * com.example.gs.mvpdemo.presenter
  */
 
-public class LastestPresenterImpl extends BasePresenter<LastestFragment> implements
+public class LastestPresenterImpl extends BasePresenter<LastestContract.LastestView> implements
         LastestContract.LastestPresenter {
 //    public static final String MODEL_KEY = "getLastest";
 
@@ -44,15 +44,15 @@ public class LastestPresenterImpl extends BasePresenter<LastestFragment> impleme
 
     }
 
-    @Override
-    public HashMap<String, IModel> getiModelMap() {
-        return null;
-    }
-
-    @Override
-    public HashMap<String, IModel> loadModelMap(IModel... models) {
-        return null;
-    }
+//    @Override
+//    public HashMap<String, IModel> getiModelMap() {
+//        return null;
+//    }
+//
+//    @Override
+//    public HashMap<String, IModel> loadModelMap(IModel... models) {
+//        return null;
+//    }
 //    @Override
 //    public HashMap<String, IModel> getiModelMap() {
 //        return loadModelMap(new LastestModel());

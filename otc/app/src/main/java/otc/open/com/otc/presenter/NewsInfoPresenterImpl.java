@@ -7,7 +7,6 @@ import otc.open.com.otc.base.mvp.IModel;
 import otc.open.com.otc.contract.NewsInfoContract;
 import otc.open.com.otc.model.NewsInfoModel;
 import otc.open.com.otc.service.bean.NewsInfoBean;
-import otc.open.com.otc.ui.activity.NewsInfoActivity;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -21,17 +20,17 @@ import retrofit2.Response;
  * @modifyAuthor:
  * @description: ****************************************************************************************************************************************************************************
  */
-public class NewsInfoPresenterImpl extends BasePresenter<NewsInfoActivity> implements
+public class NewsInfoPresenterImpl extends BasePresenter<NewsInfoContract.NewsInfoView> implements
         NewsInfoContract.NewsInfoPresenter{
-    @Override
-    public HashMap<String, IModel> getiModelMap() {
-        return null;
-    }
-
-    @Override
-    public HashMap<String, IModel> loadModelMap(IModel... models) {
-        return null;
-    }
+//    @Override
+//    public HashMap<String, IModel> getiModelMap() {
+//        return null;
+//    }
+//
+//    @Override
+//    public HashMap<String, IModel> loadModelMap(IModel... models) {
+//        return null;
+//    }
 
     @Override
     public void getNewsInfo(String id) {

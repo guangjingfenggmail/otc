@@ -52,6 +52,12 @@ public class LastestActivity extends BaseActivity<LastestPresenterImpl> implemen
     }
 
     @Override
+    protected void attachView() {
+        if (mPresenter != null)
+            mPresenter.attachView(this);
+    }
+
+    @Override
     protected void initVaules() {
         SwipeRefreshUtil.setSiwpeLayout(swipelayout,this,this);
         mPresenter.getLastest();
