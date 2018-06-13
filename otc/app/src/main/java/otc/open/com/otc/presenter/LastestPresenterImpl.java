@@ -3,6 +3,7 @@ package otc.open.com.otc.presenter;
 
 import java.util.HashMap;
 
+import otc.open.com.otc.base.BaseFragment;
 import otc.open.com.otc.base.BasePresenter;
 import otc.open.com.otc.base.mvp.IModel;
 import otc.open.com.otc.contract.LastestContract;
@@ -10,6 +11,7 @@ import otc.open.com.otc.model.LastestModel;
 import otc.open.com.otc.service.bean.LatestBean;
 import otc.open.com.otc.service.bean.NewsInfoBean;
 import otc.open.com.otc.ui.activity.LastestActivity;
+import otc.open.com.otc.ui.fragment.LastestFragment;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -21,7 +23,7 @@ import retrofit2.Response;
  * com.example.gs.mvpdemo.presenter
  */
 
-public class LastestPresenterImpl extends BasePresenter<LastestActivity> implements
+public class LastestPresenterImpl extends BasePresenter<LastestFragment> implements
         LastestContract.LastestPresenter {
 //    public static final String MODEL_KEY = "getLastest";
 

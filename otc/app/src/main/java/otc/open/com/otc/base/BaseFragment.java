@@ -22,9 +22,8 @@ import otc.open.com.otc.base.mvp.IView;
  **/
 public abstract class BaseFragment<P extends BasePresenter> extends Fragment implements
         IView, View.OnClickListener {
-    protected View view;
     protected P mPresenter;
-
+    protected View view;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,8 +36,8 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        attachView();
         mPresenter = initPresenter();
+        attachView();
     }
 
     @Override
