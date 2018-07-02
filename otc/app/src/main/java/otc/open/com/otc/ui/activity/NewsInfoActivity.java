@@ -6,12 +6,15 @@ import android.webkit.WebView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import otc.open.com.otc.R;
 import otc.open.com.otc.base.BaseActivity;
 import otc.open.com.otc.contract.NewsInfoContract;
 import otc.open.com.otc.presenter.NewsInfoPresenterImpl;
+import otc.open.com.otc.rx.TraceEvent;
 import otc.open.com.otc.service.bean.NewsInfoBean;
 
 /**
@@ -74,5 +77,9 @@ public class NewsInfoActivity extends BaseActivity<NewsInfoPresenterImpl> implem
 
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().post(new TraceEvent(getClass().getSimpleName(), "阅读","1"));
+    }
 }
