@@ -1,6 +1,8 @@
 package otc.open.com.otc.presenter;
 
 
+import javax.inject.Inject;
+
 import otc.open.com.otc.contract.NewsInfoContract;
 import otc.open.com.otc.model.NewsInfoModel;
 import otc.open.com.otc.service.bean.NewsInfoBean;
@@ -15,10 +17,11 @@ import otc.open.com.otc.service.bean.NewsInfoBean;
  * @modifyAuthor:
  * @description: ****************************************************************************************************************************************************************************
  */
-public class NewsInfoPresenterImpl {
+public class NewsInfoPresenter {
     private NewsInfoContract.NewsInfoView mView;
 
-    public NewsInfoPresenterImpl(NewsInfoContract.NewsInfoView mView) {
+    @Inject
+    public NewsInfoPresenter(NewsInfoContract.NewsInfoView mView) {
         this.mView = mView;
     }
 

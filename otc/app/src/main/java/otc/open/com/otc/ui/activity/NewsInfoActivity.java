@@ -7,10 +7,14 @@ import android.webkit.WebView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 
+import javax.inject.Inject;
+
 import otc.open.com.otc.R;
 import otc.open.com.otc.contract.NewsInfoContract;
-import otc.open.com.otc.presenter.NewsInfoPresenterImpl;
+import otc.open.com.otc.presenter.NewsInfoPresenter;
 import otc.open.com.otc.service.bean.NewsInfoBean;
+import otc.open.com.otc.ui.component.DaggerNewsInfoComponent;
+import otc.open.com.otc.ui.module.NewsInfoModule;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -25,7 +29,8 @@ import otc.open.com.otc.service.bean.NewsInfoBean;
 @Route(path = "/path/newsinfo")
 public class NewsInfoActivity extends AppCompatActivity implements NewsInfoContract.NewsInfoView {
     WebView webview;
-    NewsInfoPresenterImpl mPresenter;
+    @Inject
+    NewsInfoPresenter mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,7 +41,9 @@ public class NewsInfoActivity extends AppCompatActivity implements NewsInfoContr
 
 
     protected void initVaules() {
-        mPresenter = new NewsInfoPresenterImpl(this);
+        DaggerNewsInfoComponent.builder()
+                .newsInfoModule(new NewsInfoModule(this))
+                .build().inject(this);
         webview = (WebView) findViewById(R.id.webview);
         mPresenter.getNewsInfo(getIntent().getStringExtra("ID"));
     }

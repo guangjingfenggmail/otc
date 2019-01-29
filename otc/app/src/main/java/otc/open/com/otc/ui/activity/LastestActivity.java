@@ -13,11 +13,16 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import otc.open.com.otc.R;
 import otc.open.com.otc.contract.LastestContract;
-import otc.open.com.otc.presenter.LastestPresenterImpl;
+import otc.open.com.otc.presenter.LastestPresenter;
 import otc.open.com.otc.service.bean.LatestBean;
 import otc.open.com.otc.ui.adapter.LastestAdapter;
+import otc.open.com.otc.ui.component.DaggerLastestComponent;
+import otc.open.com.otc.ui.component.LastestComponent;
+import otc.open.com.otc.ui.module.LastestModule;
 import otc.open.com.otc.utils.SwipeRefreshUtil;
 import otc.open.com.otc.widget.GridItemDividerDecoration;
 
@@ -37,7 +42,8 @@ public class LastestActivity extends AppCompatActivity implements LastestContrac
     RecyclerView recycleview;
     SwipeRefreshLayout swipelayout;
     private LinearLayoutManager linearLayoutManager;
-    private LastestPresenterImpl mPresenter;
+    @Inject
+    LastestPresenter mPresenter;
 
 
     LastestAdapter mLastestAdapter;
@@ -53,7 +59,11 @@ public class LastestActivity extends AppCompatActivity implements LastestContrac
 
 
     protected void initVaules() {
-        mPresenter = new LastestPresenterImpl(this);
+        DaggerLastestComponent.builder()
+                .lastestModule(new LastestModule(this))
+                .build()
+                .inject(this);
+
         recycleview = (RecyclerView) findViewById(R.id.recycleview);
         swipelayout = (SwipeRefreshLayout) findViewById(R.id.swipelayout);
 

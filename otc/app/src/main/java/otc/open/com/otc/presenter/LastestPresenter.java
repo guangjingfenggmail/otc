@@ -2,6 +2,8 @@ package otc.open.com.otc.presenter;
 
 
 
+import javax.inject.Inject;
+
 import otc.open.com.otc.contract.LastestContract;
 import otc.open.com.otc.model.LastestModel;
 import otc.open.com.otc.service.bean.LatestBean;
@@ -14,11 +16,12 @@ import otc.open.com.otc.service.bean.LatestBean;
  * com.example.gs.mvpdemo.presenter
  */
 
-public class LastestPresenterImpl  {
+public class LastestPresenter {
 
     private LastestContract.LastestView mView;
 
-    public LastestPresenterImpl(LastestContract.LastestView mView) {
+    @Inject
+    public LastestPresenter(LastestContract.LastestView mView) {
         this.mView = mView;
     }
 
