@@ -21,12 +21,15 @@ public class LastestPresenter {
     private LastestContract.LastestView mView;
 
     @Inject
+    LastestModel mModel;
+
+    @Inject
     public LastestPresenter(LastestContract.LastestView mView) {
         this.mView = mView;
     }
 
     public void getLastest() {
-        new LastestModel().latest(new LastestModel.LastestCallBack() {
+        mModel.latest(new LastestModel.LastestCallBack() {
             @Override
             public void onSuccess(LatestBean result) {
                 mView.onGetLastest(result);

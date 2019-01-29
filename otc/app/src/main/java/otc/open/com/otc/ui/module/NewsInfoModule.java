@@ -3,6 +3,7 @@ package otc.open.com.otc.ui.module;
 import dagger.Module;
 import dagger.Provides;
 import otc.open.com.otc.contract.NewsInfoContract;
+import otc.open.com.otc.model.NewsInfoModel;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -26,5 +27,10 @@ public class NewsInfoModule {
     @Provides
     NewsInfoContract.NewsInfoView providerNewsInfoView(){
         return mView;
+    }
+
+    @Provides
+    NewsInfoModel provideNewsInfoModel(){
+        return new NewsInfoModel();
     }
 }

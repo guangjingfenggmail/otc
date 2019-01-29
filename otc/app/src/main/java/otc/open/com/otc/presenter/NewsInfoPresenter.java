@@ -21,12 +21,15 @@ public class NewsInfoPresenter {
     private NewsInfoContract.NewsInfoView mView;
 
     @Inject
+    NewsInfoModel mModel;
+
+    @Inject
     public NewsInfoPresenter(NewsInfoContract.NewsInfoView mView) {
         this.mView = mView;
     }
 
     public void getNewsInfo(String id) {
-        new NewsInfoModel().getNewsInfo(id, new NewsInfoModel.NewsInfoCallBack() {
+        mModel.getNewsInfo(id, new NewsInfoModel.NewsInfoCallBack() {
             @Override
             public void onSuccess(NewsInfoBean result) {
                 mView.onGetNewsInfo(result);

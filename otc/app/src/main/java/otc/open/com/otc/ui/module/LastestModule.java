@@ -1,8 +1,10 @@
 package otc.open.com.otc.ui.module;
 
+
 import dagger.Module;
 import dagger.Provides;
 import otc.open.com.otc.contract.LastestContract;
+import otc.open.com.otc.model.LastestModel;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -26,4 +28,10 @@ public class LastestModule {
     LastestContract.LastestView provideLastestView(){
         return mView;
     }
+
+    @Provides
+    LastestModel provideLastestModel(){
+        return new LastestModel();
+    }
+
 }
