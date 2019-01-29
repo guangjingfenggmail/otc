@@ -3,7 +3,6 @@ package otc.open.com.otc.model;
 import android.support.annotation.NonNull;
 
 import otc.open.com.otc.base.BaseCallBack;
-import otc.open.com.otc.base.BaseModel;
 import otc.open.com.otc.service.NewsService;
 import otc.open.com.otc.service.bean.LatestBean;
 
@@ -17,7 +16,7 @@ import otc.open.com.otc.service.bean.LatestBean;
  * 主要做一些数据处理呀,网路请求呀
  */
 
-public class LastestModel extends BaseModel {
+public class LastestModel {
 
     /**
      *

@@ -3,7 +3,6 @@ package otc.open.com.otc.model;
 import android.support.annotation.NonNull;
 
 import otc.open.com.otc.base.BaseCallBack;
-import otc.open.com.otc.base.BaseModel;
 import otc.open.com.otc.service.NewsService;
 import otc.open.com.otc.service.bean.NewsInfoBean;
 
@@ -18,7 +17,7 @@ import otc.open.com.otc.service.bean.NewsInfoBean;
  * @modifyAuthor:
  * @description: ****************************************************************************************************************************************************************************
  */
-public class NewsInfoModel extends BaseModel {
+public class NewsInfoModel  {
 
 
     /**詳細信息

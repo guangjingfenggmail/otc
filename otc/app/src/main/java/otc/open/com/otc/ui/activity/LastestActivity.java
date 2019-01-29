@@ -1,21 +1,19 @@
 package otc.open.com.otc.ui.activity;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import otc.open.com.otc.R;
-import otc.open.com.otc.base.BaseActivity;
 import otc.open.com.otc.contract.LastestContract;
 import otc.open.com.otc.presenter.LastestPresenterImpl;
 import otc.open.com.otc.service.bean.LatestBean;
@@ -35,61 +33,48 @@ import otc.open.com.otc.widget.GridItemDividerDecoration;
  * @description: *****************************************************************************************************************************************************************************
  **/
 @Route(path = "/path/lastest")
-public class LastestActivity extends BaseActivity<LastestPresenterImpl> implements LastestContract.LastestView,SwipeRefreshLayout.OnRefreshListener {
-    @BindView(R.id.recycleview)
+public class LastestActivity extends AppCompatActivity implements LastestContract.LastestView,SwipeRefreshLayout.OnRefreshListener {
     RecyclerView recycleview;
-    @BindView(R.id.swipelayout)
     SwipeRefreshLayout swipelayout;
     private LinearLayoutManager linearLayoutManager;
+    private LastestPresenterImpl mPresenter;
 
 
     LastestAdapter mLastestAdapter;
     List<LatestBean.StorieBean> storiesList = new ArrayList<>();
 
     @Override
-    protected LastestPresenterImpl initPresenter() {
-        return new LastestPresenterImpl();
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_lastest_main);
+
+        initVaules();
     }
 
-    @Override
+
     protected void initVaules() {
+        mPresenter = new LastestPresenterImpl(this);
+        recycleview = (RecyclerView) findViewById(R.id.recycleview);
+        swipelayout = (SwipeRefreshLayout) findViewById(R.id.swipelayout);
+
         SwipeRefreshUtil.setSiwpeLayout(swipelayout,this,this);
-        mPresenter.getLastest();
         recycleview.addItemDecoration(new GridItemDividerDecoration(this, R.dimen.divider_height, R.color.divider_color));
         recycleview.setItemAnimator(new DefaultItemAnimator());
         recycleview.setLayoutManager(linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mLastestAdapter = new LastestAdapter(this,storiesList);
         recycleview.setAdapter(mLastestAdapter);
 
-    }
-
-    @Override
-    protected void bindView() {
-        ButterKnife.bind(this);
-    }
-
-    @Override
-    protected int getInflateLayoutId() {
-        return R.layout.activity_lastest_main;
-    }
-
-
-    @Override
-    public void onClick(View v) {
+        mPresenter.getLastest();
 
     }
 
     @Override
-    public void onSuccess(LatestBean callback) {
+    public void onGetLastest(LatestBean result) {
         storiesList.clear();
-        storiesList.addAll(callback.stories);
+        storiesList.addAll(result.stories);
         mLastestAdapter.notifyDataSetChanged();
     }
 
-    @Override
-    public void onFailure(String str) {
-
-    }
 
     @Override
     public void onRefresh() {

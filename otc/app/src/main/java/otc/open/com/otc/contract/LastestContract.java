@@ -1,6 +1,5 @@
 package otc.open.com.otc.contract;
 
-import otc.open.com.otc.base.BaseContractView;
 import otc.open.com.otc.service.bean.LatestBean;
 
 /**
@@ -14,12 +13,8 @@ import otc.open.com.otc.service.bean.LatestBean;
 
 public class LastestContract {
 
-    public interface LastestView  extends BaseContractView<LatestBean> {
-       
+    public interface LastestView  {
+        void onGetLastest(LatestBean result);
     }
 
-
-    public interface LastestPresenter {
-        void getLastest();
-    }
 }

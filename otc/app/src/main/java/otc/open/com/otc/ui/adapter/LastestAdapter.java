@@ -1,9 +1,7 @@
 package otc.open.com.otc.ui.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -13,13 +11,10 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import otc.open.com.otc.R;
 import otc.open.com.otc.base.adapter.CommonRecyclerViewAdapter;
 import otc.open.com.otc.base.adapter.CommonRecyclerViewHolder;
 import otc.open.com.otc.service.bean.LatestBean;
-import otc.open.com.otc.ui.activity.NewsInfoActivity;
 import otc.open.com.otc.utils.ImageDisplay;
 
 /**
@@ -79,14 +74,13 @@ public class LastestAdapter extends CommonRecyclerViewAdapter<LatestBean.StorieB
     }
 
     static class LastestViewHolder extends CommonRecyclerViewHolder{
-        @BindView(R.id.image)
         SimpleDraweeView image;
-        @BindView(R.id.txtTitle)
         TextView txtTitle;
 
         LastestViewHolder(View view) {
             super(view);
-            ButterKnife.bind(this, view);
+            image = view.findViewById(R.id.image);
+            txtTitle = view.findViewById(R.id.txtTitle);
         }
     }
 }

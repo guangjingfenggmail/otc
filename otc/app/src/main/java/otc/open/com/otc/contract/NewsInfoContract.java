@@ -1,6 +1,6 @@
 package otc.open.com.otc.contract;
 
-import otc.open.com.otc.base.BaseContractView;
+
 import otc.open.com.otc.service.bean.NewsInfoBean;
 
 /**
@@ -14,15 +14,7 @@ import otc.open.com.otc.service.bean.NewsInfoBean;
  * @description: ****************************************************************************************************************************************************************************
  */
 public class NewsInfoContract {
-    public interface NewsInfoView  extends BaseContractView<NewsInfoBean>{
-
-    }
-
-    public interface NewsInfoPresenter{
-        /**
-         *
-         * @param id
-         */
-        void getNewsInfo(String id);
+    public interface NewsInfoView {
+        void onGetNewsInfo(NewsInfoBean result);
     }
 }

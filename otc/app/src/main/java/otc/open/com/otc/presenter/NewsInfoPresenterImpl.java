@@ -1,13 +1,9 @@
 package otc.open.com.otc.presenter;
 
-import java.util.HashMap;
 
-import otc.open.com.otc.base.BasePresenter;
-import otc.open.com.otc.base.mvp.IModel;
 import otc.open.com.otc.contract.NewsInfoContract;
 import otc.open.com.otc.model.NewsInfoModel;
 import otc.open.com.otc.service.bean.NewsInfoBean;
-import otc.open.com.otc.ui.activity.NewsInfoActivity;
 
 /**
  * ****************************************************************************************************************************************************************************
@@ -19,29 +15,22 @@ import otc.open.com.otc.ui.activity.NewsInfoActivity;
  * @modifyAuthor:
  * @description: ****************************************************************************************************************************************************************************
  */
-public class NewsInfoPresenterImpl extends BasePresenter<NewsInfoActivity> implements
-        NewsInfoContract.NewsInfoPresenter{
-    @Override
-    public HashMap<String, IModel> getiModelMap() {
-        return null;
+public class NewsInfoPresenterImpl {
+    private NewsInfoContract.NewsInfoView mView;
+
+    public NewsInfoPresenterImpl(NewsInfoContract.NewsInfoView mView) {
+        this.mView = mView;
     }
 
-    @Override
-    public HashMap<String, IModel> loadModelMap(IModel... models) {
-        return null;
-    }
-
-    @Override
     public void getNewsInfo(String id) {
         new NewsInfoModel().getNewsInfo(id, new NewsInfoModel.NewsInfoCallBack() {
             @Override
             public void onSuccess(NewsInfoBean result) {
-                getIView().onSuccess(result);
+                mView.onGetNewsInfo(result);
             }
 
             @Override
             public void onFailure(String msg) {
-                getIView().onFailure(msg);
             }
         });
     }
